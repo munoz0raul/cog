@@ -1806,7 +1806,12 @@ on_export_shm_buffer (void* data, struct wpe_fdo_shm_exported_buffer* exported_b
         } else {
             width = wl_shm_buffer_get_width(exported_shm_buffer);
             height = wl_shm_buffer_get_height(exported_shm_buffer);
+            configure_surface_geometry(0, 0);
+            width = win_data.width;
+            height = win_data.height;
         }
+        g_debug("TEST: LINE:%d width:%d height:%d \n", __LINE__, width, height);
+
         int32_t stride = wl_shm_buffer_get_stride (exported_shm_buffer);
         uint32_t format = wl_shm_buffer_get_format (exported_shm_buffer);
 
